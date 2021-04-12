@@ -1,16 +1,31 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from devices import *
+from manager import *
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    a = Keyboard("A-1", "plastic", "Logitech", "China", 200, "Ukraine")
+    b = Monitor("B-2", "plastic", "HyperX", "English", 150, "Ukraine")
+    d = Monitor("B-3", "iron", "HyperX", "China", 170, "Ukraine")
+
+    objects = [a, b, d]
+    manager_object = DeviceManager(objects)
+
+    out1 = manager_object.sort_by_price(False)
+    print("sorted by price\n")
+    for i in out1:
+        print(i)
+
+    out2 = manager_object.search_by_produce("China")
+    print("search by produce\n")
+    for i in out2:
+        print(i)
+
+    out3 = manager_object.search_by_price(200)
+    print("search by price\n")
+    for i in out3:
+        print(i)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
